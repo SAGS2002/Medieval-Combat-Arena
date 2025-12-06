@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/arena.css">
+    <title>Arena RPG</title>
+</head>
+
+<body class="arena-bg">
+    <div class="level-indicator">
+        <h2>NIVEL <span id="num-nivel">1</span></h2>
+    </div>
+
+    <div class="arena-container">
+
+        <div class="batalla">
+
+            <div class="luchador jugador">
+                <div class="info-box">
+                    <h2 id="nombre-jugador">Héroe</h2>
+                    <div class="barra-contenedor">
+                        <div id="vida-jugador" class="barra"></div>
+                    </div>
+                    <span id="vida-valor-jugador">100/100</span>
+                </div>
+                <div class="personaje-img-container">
+                    <img id="img-jugador" src="" alt="Heroe">
+                    <div class="sombra-piso"></div>
+                </div>
+            </div>
+
+            <div class="vs-container">
+                <span class="vs-text">VS</span>
+            </div>
+
+            <div class="luchador enemigo">
+                <div class="info-box">
+                    <h2 id="nombre-enemigo">Enemigo</h2>
+                    <div class="barra-contenedor">
+                        <div id="vida-enemigo" class="barra enemy-bar"></div>
+                    </div>
+                    <span id="vida-valor-enemigo">100/100</span>
+                </div>
+                <div class="personaje-img-container">
+                    <img id="img-enemigo" src="" alt="Enemigo">
+                    <div class="sombra-piso"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-control">
+            <div id="log-batalla" class="log-box">
+                <p>¡El combate ha comenzado!</p>
+            </div>
+            <button id="btn-atacar" class="btn-action">
+                <span class="sword-icon">⚔️</span> ATACAR
+            </button>
+        </div>
+    </div>
+
+    <div id="modal-fin" class="modal-overlay hidden">
+        <div class="modal-content">
+            <h1 id="modal-titulo">VICTORIA</h1>
+            <p id="modal-mensaje">Has derrotado a tu enemigo.</p>
+            <button id="btn-continuar" class="btn-modal">CONTINUAR</button>
+        </div>
+    </div>
+
+    <script type="module" src="/js/arena.js"></script>
+</body>
+
+</html>

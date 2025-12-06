@@ -1,0 +1,129 @@
+/* --- ESTILOS DE LA PANTALLA DE INICIO (Landing) --- */
+
+/* Fondo general épico */
+.landing-page {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100%;
+    /* Un degradado oscuro que simula una mazmorra o noche */
+    background: radial-gradient(circle at center, #2b1010 0%, #000000 90%);
+    font-family: 'Cinzel Decorative', serif;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Efecto de viñeta (bordes oscuros) */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(transparent 50%, black 100%);
+    pointer-events: none; /* Deja pasar los clics */
+    z-index: 1;
+}
+
+.hero-content {
+    text-align: center;
+    z-index: 2; /* Por encima de la viñeta */
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    animation: fadeIn 2s ease-in;
+}
+
+/* --- TIPOGRAFÍA --- */
+.pre-title {
+    font-size: 1.2rem;
+    color: #888;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-bottom: -10px;
+}
+
+.game-title {
+    font-size: 5rem;
+    line-height: 1;
+    text-transform: uppercase;
+    /* Efecto de texto dorado metálico */
+    background: linear-gradient(to bottom, #cfc09f 22%, #634f2c 24%, #cfc09f 26%, #cfc09f 27%, #ffecb3 40%, #3a2c0f 78%); 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+    color: #fff;
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.3));
+}
+
+.highlight {
+    font-size: 6.5rem;
+    color: #d32f2f; /* Rojo sangre */
+    background: none;
+    -webkit-text-fill-color: #d32f2f;
+    text-shadow: 0 0 20px rgba(211, 47, 47, 0.6);
+}
+
+.divider {
+    height: 2px;
+    width: 200px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+    margin: 20px auto 0;
+}
+
+/* --- BOTÓN DE INICIO --- */
+.btn-start {
+    display: inline-block;
+    padding: 20px 50px;
+    font-size: 1.8rem;
+    text-decoration: none;
+    color: #d4af37; /* Dorado */
+    border: 2px solid #d4af37;
+    background: rgba(0, 0, 0, 0.6);
+    position: relative;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    overflow: hidden; /* Para el efecto de brillo */
+}
+
+/* Efecto Hover: Se llena de rojo y brilla */
+.btn-start:hover {
+    background-color: #3b0f0f;
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+    transform: scale(1.05);
+    text-shadow: 0 0 10px white;
+    border-color: #fff;
+    color: #fff;
+}
+
+/* Iconos de espadas */
+.icon {
+    font-size: 1.5rem;
+    vertical-align: middle;
+    opacity: 0.7;
+}
+
+.version {
+    margin-top: 15px;
+    font-size: 0.8rem;
+    color: #444;
+    font-family: sans-serif;
+}
+
+/* --- ANIMACIONES --- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsivo para celulares */
+@media (max-width: 768px) {
+    .game-title { font-size: 3rem; }
+    .highlight { font-size: 4rem; }
+    .btn-start { padding: 15px 30px; font-size: 1.2rem; }
+}

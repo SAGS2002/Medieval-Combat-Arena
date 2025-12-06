@@ -1,0 +1,227 @@
+/* 1. Importamos la fuente medieval */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap');
+
+/* --- RESET Y FONDO GENERAL --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0a0a0a; /* Negro casi puro */
+    /* Un degradado radial para que parezca iluminado por una antorcha */
+    background-image: radial-gradient(circle at center, #1f1f1f 0%, #000000 100%);
+    color: #e0e0e0;
+    font-family: 'Cinzel Decorative', serif; /* La fuente del RPG */
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* --- TÍTULO ÉPICO --- */
+.choose-title {
+    font-size: 3.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #d4af37; /* Dorado metálico */
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    /* Sombra para efecto de brillo y profundidad */
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.6), 4px 4px 0 #000;
+    border-bottom: 2px solid #d4af37; /* Línea dorada abajo */
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+/* Centrar el título en su contenedor */
+#choose {
+    text-align: center;
+    width: 100%;
+    max-width: 1400px;
+}
+
+/* --- GRILLA DE CARTAS (Layout) --- */
+.choose-card {
+    display: flex;
+    flex-wrap: wrap; /* Para que bajen si no caben en pantalla */
+    justify-content: center;
+    gap: 30px; /* Espacio entre cartas */
+}
+
+/* Corrección para los divs extra que tenías en el HTML */
+.choose-card > div {
+    flex: 1 1 250px; /* Ancho base 250px, pero flexibles */
+    max-width: 300px;
+}
+
+/* --- LA CARTA DEL PERSONAJE --- */
+.class-choose {
+    background: linear-gradient(145deg, #1a1a1a, #252525); /* Fondo gris oscuro con relieve */
+    border: 2px solid #5c4d32; /* Borde color bronce viejo */
+    border-radius: 8px; /* Esquinas apenas redondeadas */
+    padding: 15px;
+    text-align: center;
+    transition: all 0.3s ease; /* Animación suave */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.7); /* Sombra negra fuerte */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto al pasar el mouse por la carta */
+.class-choose:hover {
+    transform: translateY(-10px); /* Sube un poco */
+    border-color: #d4af37; /* El borde brilla dorado */
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.2); /* Resplandor dorado */
+}
+
+/* Imágenes de los personajes */
+.class-choose img {
+    width: 100%;
+    height: 300px;
+    object-fit: contain; /* Que se vea el personaje entero */
+    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.8)); /* Sombra a la silueta */
+    transition: transform 0.3s;
+}
+
+.class-choose:hover img {
+    transform: scale(1.05); /* Pequeño zoom al personaje */
+}
+
+/* --- BOTONES DE CLASE --- */
+.type {
+    width: 100%;
+    margin-top: 15px;
+    padding: 12px;
+    font-size: 1.5rem;
+    font-family: 'Cinzel Decorative', serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #d4af37; /* Texto dorado */
+    background-color: #3b0f0f; /* Fondo rojo sangre oscuro */
+    border: 2px solid #d4af37; /* Borde dorado */
+    cursor: pointer;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5); /* Sombra interna */
+    transition: all 0.2s;
+    position: relative;
+}
+
+/* Efecto al pasar el mouse por el botón */
+.type:hover {
+    background-color: #681212; /* Rojo más vivo */
+    color: #fff; /* Texto blanco */
+    box-shadow: 0 0 15px #d4af37; /* El botón brilla */
+    text-shadow: 0 0 5px white;
+}
+
+/* Efecto al hacer clic */
+.type:active {
+    transform: scale(0.95);
+}
+/* --- ESTADÍSTICAS DEL PERSONAJE --- */
+.stats {
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo semitransparente */
+    border-top: 1px solid #5c4d32;
+    border-bottom: 1px solid #5c4d32;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 0.9rem;
+    color: #ccc;
+    font-family: sans-serif; /* Fuente legible para números */
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.stats p {
+    margin: 0;
+    display: flex;
+    justify-content: space-between; /* Texto a los extremos */
+    padding: 0 10px;
+}
+
+/* --- SELLO DE FAVORITO (Ribbon) --- */
+.favorite-card {
+    position: relative;
+    border-color: #d4af37;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+    overflow: hidden; /* IMPORTANTE: Esto corta las puntas del listón */
+}
+
+/* ESTILO ALTERNATIVO: MEDALLA FLOTANTE */
+.badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: auto;
+    transform: none; /* Sin rotación */
+    
+    background: #d4af37; /* Dorado */
+    color: #000; /* Texto negro para contraste */
+    border: 2px solid #fff;
+    border-radius: 50px; /* Redondeado */
+    
+    padding: 5px 15px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+    z-index: 20;
+}
+
+/* Hacemos que la carta del favorito brille un poco más al pasar el mouse */
+.favorite-card:hover {
+    box-shadow: 0 0 30px rgba(211, 47, 47, 0.4); /* Resplandor rojo */
+    border-color: #ff4444;
+}
+
+/* --- VERSIÓN MÓVIL (Pantallas menores a 768px) --- */
+@media (max-width: 768px) {
+
+    /* 1. Ajustar el Título Gigante */
+    .choose-title {
+        font-size: 2rem; /* Letra más pequeña para que quepa */
+        margin-bottom: 1.5rem;
+    }
+
+    /* 2. Ajustar la Grilla de Cartas */
+    .choose-card {
+        gap: 20px; /* Menos espacio entre cartas */
+        padding: 0 15px; /* Margen a los lados para que no toquen el borde */
+    }
+
+    /* 3. Forzar que las cartas ocupen todo el ancho */
+    .class-choose, 
+    .choose-card > div {
+        flex: 1 1 100%; /* Ocupa el 100% del ancho disponible */
+        max-width: 100%; /* Elimina el límite de 300px */
+        min-height: auto; /* Deja que la altura se ajuste al contenido */
+    }
+
+    /* 4. Reducir un poco la imagen */
+    .class-choose img {
+        height: 220px; /* Más bajita para que no ocupe toda la pantalla */
+        margin-bottom: 5px;
+    }
+
+    /* 5. Ajustar el Listón de Favorito */
+    /* En móvil hay menos espacio, lo hacemos más discreto */
+    .badge {
+        font-size: 0.6rem;
+        padding: 5px 30px;
+        width: 150px;
+        right: -45px;
+        top: 15px;
+    }
+
+    /* 6. Botones más fáciles de tocar con el dedo */
+    .type {
+        padding: 15px; /* Más "gorditos" para el dedo */
+        font-size: 1.2rem;
+    }
+}

@@ -1,0 +1,357 @@
+/* --- FONDO Y GENERAL --- */
+.arena-bg {
+    background: radial-gradient(circle at bottom, #1a0505 0%, #000000 100%);
+    color: white;
+    font-family: 'Cinzel Decorative', serif;
+    height: 100vh;
+    overflow: hidden; /* Evita scroll */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* --- INDICADOR DE NIVEL --- */
+.level-indicator {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.2), transparent);
+    border-bottom: 1px solid #d4af37;
+}
+
+.level-indicator h2 {
+    color: #d4af37;
+    font-size: 2rem;
+    text-shadow: 0 0 10px #d4af37;
+    margin: 0;
+}
+
+/* --- DISPOSICIÓN DE BATALLA --- */
+.batalla {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; /* Alineados al suelo */
+    padding: 0 5%;
+    height: 50vh;
+    position: relative;
+}
+
+.luchador {
+    position: relative;
+    width: 300px;
+    text-align: center;
+}
+
+/* --- BARRAS DE VIDA ESTILIZADAS --- */
+.info-box {
+    margin-bottom: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border: 1px solid #5c4d32;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.8);
+}
+
+.barra-contenedor {
+    height: 20px;
+    background: #333;
+    border: 2px solid #d4af37; /* Borde dorado */
+    margin: 5px 0;
+    position: relative;
+}
+
+.barra {
+    height: 100%;
+    background: linear-gradient(90deg, #2ecc71, #27ae60); /* Verde Jugador */
+    width: 100%;
+    transition: width 0.5s ease-out;
+}
+
+/* Barra del enemigo en rojo */
+.enemy-bar {
+    background: linear-gradient(90deg, #e74c3c, #c0392b);
+}
+
+/* --- IMÁGENES Y EFECTOS --- */
+.personaje-img-container {
+    position: relative;
+    height: 300px;
+}
+
+.luchador img {
+    height: 100%;
+    filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
+    transition: transform 0.2s;
+}
+
+/* Animación de ataque (se mueve hacia adelante) */
+.atacando img {
+    transform: translateX(50px);
+}
+.enemigo.atacando img {
+    transform: translateX(-50px); /* El enemigo ataca hacia la izquierda */
+}
+
+/* Animación de daño (parpadeo rojo) */
+.herido img {
+    animation: shake 0.5s;
+    filter: sepia(1) hue-rotate(-50deg) saturate(5);
+}
+
+.sombra-piso {
+    width: 100%;
+    height: 20px;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0.8) 0%, transparent 70%);
+    position: absolute;
+    bottom: -10px;
+}
+
+/* --- TEXTO VS --- */
+.vs-text {
+    font-size: 4rem;
+    color: #444;
+    font-weight: 900;
+    text-shadow: 0 0 5px black;
+}
+
+/* --- PANEL INFERIOR (Log y Botón) --- */
+.panel-control {
+    background: rgba(10, 10, 10, 0.9);
+    border-top: 3px solid #d4af37;
+    height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    padding: 20px;
+}
+
+.log-box {
+    width: 50%;
+    height: 100%;
+    overflow-y: auto;
+    font-family: sans-serif;
+    font-size: 0.9rem;
+    text-align: left;
+    color: #bbb;
+    border-right: 1px solid #444;
+    padding-right: 20px;
+}
+
+.log-box p { margin: 5px 0; border-bottom: 1px solid #222; padding-bottom: 2px;}
+.log-player { color: #4fc3f7; }
+.log-enemy { color: #ff8a80; }
+
+.btn-action {
+    background: #3b0f0f;
+    color: #d4af37;
+    border: 2px solid #d4af37;
+    padding: 20px 40px;
+    font-size: 1.5rem;
+    font-family: 'Cinzel Decorative', serif;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+}
+
+.btn-action:hover {
+    background: #581212;
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.5);
+}
+
+/* --- MODAL DE FINAL (Estilo Dark Souls) --- */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+
+.hidden {
+    display: none;
+    opacity: 0;
+}
+
+.modal-content {
+    text-align: center;
+    border: 2px solid #d4af37;
+    padding: 40px;
+    background: #111;
+    box-shadow: 0 0 50px #d4af37;
+    animation: zoomIn 0.5s;
+}
+
+#modal-titulo {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    color: #d4af37;
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+}
+
+.derrota-texto {
+    color: #ff0000 !important;
+    text-shadow: 0 0 20px red !important;
+    box-shadow: 0 0 50px red !important; /* Cambia la sombra del cuadro */
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+@keyframes zoomIn {
+    from { transform: scale(0.5); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.enemigo img {
+    transform: scaleX(-1); 
+}
+
+/* 2. CORREGIR LA ANIMACIÓN DE ATAQUE */
+/* Como ya tiene una transformación (el espejo), la animación debe incluirla
+   para no perder el efecto al moverse */
+.enemigo.atacando img {
+    /* Se mueve a la izquierda (-50px) Y mantiene el espejo (-1) */
+    transform: translateX(-50px) scaleX(-1); 
+}
+
+/* 3. CORREGIR LA ANIMACIÓN DE DAÑO (Herido) */
+.enemigo.herido img {
+    /* Mantiene el espejo mientras tiembla */
+    animation: shake-enemigo 0.5s; 
+    filter: sepia(1) hue-rotate(-50deg) saturate(5);
+}
+
+/* Creamos una animación de temblor específica para el enemigo 
+   (para que no pierda el scaleX(-1) durante el temblor) */
+@keyframes shake-enemigo {
+    0% { transform: translate(1px, 1px) rotate(0deg) scaleX(-1); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg) scaleX(-1); }
+    20% { transform: translate(-3px, 0px) rotate(1deg) scaleX(-1); }
+    30% { transform: translate(3px, 2px) rotate(0deg) scaleX(-1); }
+    40% { transform: translate(1px, -1px) rotate(1deg) scaleX(-1); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg) scaleX(-1); }
+    60% { transform: translate(-3px, 1px) rotate(0deg) scaleX(-1); }
+    100% { transform: translate(0, 0) rotate(0deg) scaleX(-1); }
+}
+
+
+/* --- VERSIÓN MÓVIL (Pantallas menores a 768px) --- */
+@media (max-width: 768px) {
+
+    /* 1. Ajustar el Título del Nivel */
+    .level-indicator {
+        padding: 10px;
+    }
+    .level-indicator h2 {
+        font-size: 1.5rem;
+    }
+
+    /* 2. Zona de Batalla (Hacerla más compacta) */
+    .batalla {
+        height: auto; /* Altura flexible */
+        padding: 0 10px;
+        align-items: flex-end;
+        margin-bottom: 10px;
+        /* Mantenemos row para que estén lado a lado, pero apretados */
+        justify-content: center; 
+        gap: 10px;
+    }
+
+    /* 3. Luchadores (Reducir tamaño para que quepan dos) */
+    .luchador {
+        width: 48%; /* Ocupan casi la mitad cada uno */
+    }
+
+    /* Ajustar las cajas de información (Nombres y Vida) */
+    .info-box {
+        padding: 5px;
+        margin-bottom: 5px;
+    }
+    .info-box h2 {
+        font-size: 1rem; /* Texto más pequeño */
+        white-space: nowrap; /* Evitar que el nombre salte de línea */
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    #vida-valor-jugador, #vida-valor-enemigo {
+        font-size: 0.8rem;
+    }
+    .barra-contenedor {
+        height: 15px; /* Barra más fina */
+    }
+
+    /* 4. Imágenes de Personajes (Más pequeñas) */
+    .personaje-img-container {
+        height: 180px; /* Reducimos la altura drásticamente */
+    }
+
+    /* 5. El "VS" (Lo hacemos flotante y transparente para no estorbar) */
+    .vs-container {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 0; /* Detrás de los personajes si se cruzan */
+    }
+    .vs-text {
+        font-size: 3rem;
+        opacity: 0.3; /* Semitransparente */
+    }
+
+    /* 6. Panel de Control (Botón y Log apilados) */
+    .panel-control {
+        flex-direction: column-reverse; /* Botón arriba, Log abajo (o viceversa según gusto) */
+        height: auto;
+        padding: 15px;
+        gap: 15px;
+        border-top: 2px solid #d4af37;
+    }
+
+    /* El Botón de Atacar (Grande y fácil de tocar) */
+    .btn-action {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.2rem;
+    }
+
+    /* El Log de Batalla */
+    .log-box {
+        width: 100%;
+        height: 100px; /* Altura fija pequeña */
+        border-right: none;
+        border-top: 1px solid #444;
+        padding-top: 10px;
+        font-size: 0.85rem;
+    }
+
+    /* 7. Ajustar Animaciones para pantallas pequeñas */
+    /* Reducimos el desplazamiento del ataque para que no se salgan de pantalla */
+    .atacando img {
+        transform: translateX(20px); /* Antes era 50px */
+    }
+    .enemigo.atacando img {
+        /* Recuerda mantener el scaleX(-1) para el espejo */
+        transform: translateX(-20px) scaleX(-1); 
+    }
+
+    /* 8. Ajustar el Modal de Victoria */
+    .modal-content {
+        width: 90%; /* Ocupa casi todo el ancho */
+        padding: 20px;
+    }
+    #modal-titulo {
+        font-size: 2.5rem;
+    }
+}
