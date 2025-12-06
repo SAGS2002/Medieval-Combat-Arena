@@ -71,10 +71,10 @@ El objetivo principal fue aplicar conceptos avanzados de programación como **Or
 Clona este repositorio:
 
 Bash
-
+```
 git clone [https://github.com/SAGS2002/Medieval-Combat-Arena.git](https://github.com/SAGS2002/Medieval-Combat-Arena.git)
 Navega a la carpeta del proyecto.
-
+```
 Importante: Debido al uso de Módulos ES6 (type="module"), necesitas abrir el proyecto usando un servidor local para evitar errores de CORS.
 
 Si usas VS Code: Instala la extensión Live Server, haz clic derecho en index.html y selecciona "Open with Live Server".
